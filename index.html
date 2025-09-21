@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hill Cipher - Academic Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Hill Cipher</h1>
+            <p>Academic Cryptography Tool</p>
+        </div>
+        
+        <div class="content">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h2>Configure Matrix Dimensions</h2>
+                <p>Select the size of your square key matrix. The Hill cipher requires a square matrix for proper encryption and decryption operations.</p>
+                <div class="matrix-controls">
+                    <span class="matrix-size-label">Matrix Size:</span>
+                    <input type="number" id="matrixSize" value="2" min="2" max="6" class="matrix-size-input">
+                    <span class="matrix-size-label">× <span id="matrixSizeDisplay">2</span></span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h2>Define Key Matrix</h2>
+                <p>Enter the values for your key matrix. Each value should be between 0-25, corresponding to letters A-Z. The matrix must be invertible modulo 26.</p>
+                <div id="matrixGrid" class="matrix-grid"></div>
+                <div class="formula-display">
+                    Encryption: C = P × K (mod 26)
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h2>Input Message</h2>
+                <p>Enter your plaintext message for encryption or ciphertext for decryption. Only alphabetic characters will be processed.</p>
+                <div class="input-container">
+                    <textarea class="text-area" id="inputText" placeholder="Enter your message here...">HELLO</textarea>
+                    
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <h2>Execute Operation</h2>
+                <p>Choose whether to encrypt your plaintext or decrypt your ciphertext using the configured key matrix.</p>
+                <div class="button-group">
+                    <button class="btn btn-encrypt" onclick="encryptText()">🔒 Encrypt Message</button>
+                    <button class="btn btn-decrypt" onclick="decryptText()">🔓 Decrypt Message</button>
+                    <button class="btn btn-clear" onclick="clearAll()">🗑️ Clear All</button>
+                </div>
+                <div class="formula-display">
+                    Decryption: P = C × K⁻¹ (mod 26)
+                </div>
+            </div>
+            
+            <div id="result" class="result-section" style="display: none;">
+                <h3 id="resultTitle" class="result-title">Result:</h3>
+                <div class="result-container">
+                    <div id="resultText" class="result-text"></div>
+                    <button class="copy-btn" onclick="copyToClipboard('resultText')" title="Copy result">
+                        📋
+                    </button>
+                </div>
+            </div>
+            
+            <div id="error" class="error-message" style="display: none;"></div>
+            
+            <div class="academic-info">
+                <h3>📖 Hill Cipher Theory</h3>
+                <ul>
+                    <li><strong>Invented by:</strong> Lester S. Hill in 1929</li>
+                    <li><strong>Type:</strong> Polygraphic substitution cipher</li>
+                    <li><strong>Key Space:</strong> All invertible n×n matrices modulo 26</li>
+                    <li><strong>Security:</strong> Vulnerable to known-plaintext attacks</li>
+                    <li><strong>Matrix Requirement:</strong> gcd(det(K), 26) = 1 for invertibility</li>
+                    <li><strong>Block Size:</strong> Determined by matrix dimensions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="copyNotification" class="copy-notification">
+        Text copied to clipboard! ✓
+    </div>
+
+    <script src="script.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'982929f2409b4290',t:'MTc1ODQ1MzUyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
